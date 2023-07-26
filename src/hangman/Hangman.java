@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Hangman {
+public class Hangman extends HangmanStates{
     private final List<String> words = List.of("car", "cat", "ball", "computer", "hangman", "building", "card", "desk", "monitor");
     private final int maximumWrongAnswers = 5;
     private String wordToGuess;
@@ -14,7 +14,6 @@ public class Hangman {
 
     public void play() {
         System.out.println("Start of the game");
-        HangmanStates hangmanStates = new HangmanStates();
 
         generateRandomWord();
         userWord = new char[wordToGuess.length()];
@@ -23,14 +22,14 @@ public class Hangman {
         while (!gameEnded()) {
             System.out.println("\nWrong answers: " + wrongAnswers);
 //            displayDrawing();
-            System.out.print(hangmanStates.getHangmanStates(wrongAnswers));
+            System.out.print(getHangmanStates(wrongAnswers));
             displayUserWord();
             if (!guessLetter()) {
                 wrongAnswers++;
             }
         }
 
-        System.out.print("\n" + hangmanStates.getHangmanStates(wrongAnswers));
+        System.out.print("\n" + getHangmanStates(wrongAnswers));
         displayUserWord();
         System.out.println();
         if (wrongAnswers <= maximumWrongAnswers) {

@@ -2,7 +2,7 @@ package hangman;
 
 import java.util.List;
 
-public class HangmanStates {
+public abstract class HangmanStates {
     private final List<String> hangmanStates = List.of(
             """
             +---+
@@ -64,7 +64,7 @@ public class HangmanStates {
             """
     );
 
-    public String getHangmanStates(int index) {
+    protected String getHangmanStates(int index) {
         return hangmanStates.get(index);
     }
 }
